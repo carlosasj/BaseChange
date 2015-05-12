@@ -13,4 +13,6 @@ strOut2: .asciiz " eh "
 binary: .word 0:31
 input: .space 32
 
-.text 
+.text
+
+aaa
