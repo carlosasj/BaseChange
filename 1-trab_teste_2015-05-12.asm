@@ -1,15 +1,12 @@
 .data
 .align 2
-strInfoBase: .asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal"
+strInfoBase: .asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal\n"
 strGetBaseIn: .asciiz "Qual sera a base de entrada? "
 strGetBaseOut: .asciiz "Qual sera a base de saida? "
 strGetInput: 	.asciiz "Insira o numero: "
-strOut1: .asciiz "O Numero "
-strOut2: .asciiz " da base "
+strOut: .asciiz "O Numero na nova base: "
 baseIn: .word 0
-strOut3: .asciiz " para a base "
 baseOut: .word 0
-strOut4: .asciiz " eh "
 
 input: .space 32
 maxDigit: 	.word 0
@@ -54,7 +51,7 @@ main:
 	la $a0, strGetInput 	# loading the string to be printed
 	syscall			# requesting the system to print the ask message
 
-	la $s0, baseIn
+	lw $s0, baseIn
  
 	beq $s0, 2, set2
 	beq $s0, 8, set8
@@ -84,20 +81,19 @@ getstr:
 
 # ----- Conversor de qualquer base para decimal ------
 strToBase:
-	la $t0, baseIn
-	la $t1, maxDigit
+	lw $t0, baseIn
+	li $t1, '\n'
 	la $t2, input
-	li $t9, 0	# Counter
 	li $t8, 'a'	# coloque 'a' ou 'A'
 	subi $t8, $t8, '0'	# Diferença entre '0' e 'a'
 	li $s7, 0	# $s7 = Final Number
 	# $t4 = digito convertido para int
 
 strToBaseLoop:
-	beq $t9, $t1, strToBaseLoopEnd
+	lb $t4, ($t2)		# Pega caractere da string
+	beq $t4, $t1, strToBaseLoopEnd
 	mul $s7, $s7, $t0	# num = num*base
 	
-	lb $t4, ($t2)		# Pega caractere da string
 	subi $t4, $t4, '0'	# Transforma Dígitos String para Int
 	
 	ble $t4, 9, notHex	# IF dígito Hexadecimal...
@@ -106,7 +102,6 @@ strToBaseLoop:
 
 notHex:
 	add $s7, $s7, $t4	# num = num + $t4
-	addi $t9, $t9, 1	# i++
 	addi $t2, $t2, 1	# Avança na string
 	j strToBaseLoop
 
@@ -114,4 +109,33 @@ strToBaseLoopEnd:
 
 # ----- END of Conversor de qualquer base para decimal ------
 
+	li $v0, 4  		# 4 is the code for printing a string
+	la $a0, strOut 	# loading the string to be printed
+	syscall			# requesting the system to print the message
 
+	lw $s0, baseOut
+ 
+	beq $s0, 2, out2
+	beq $s0, 8, out8
+	beq $s0, 10, out10
+	beq $s0, 16, out16
+       
+out2:
+	li $v0, 35
+	j printNumber
+ 
+out8:
+	#li $a1, 16
+	#j printNumber
+ 
+out10:
+	li $v0, 36
+	j printNumber
+ 
+out16:
+	li $v0, 34
+       
+printNumber:
+
+	move $a0, $s7
+	syscall
