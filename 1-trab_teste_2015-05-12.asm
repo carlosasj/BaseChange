@@ -113,6 +113,7 @@ strToBaseLoopEnd:
 	la $a0, strOut 	# loading the string to be printed
 	syscall			# requesting the system to print the message
 
+# ----- Switch -----
 	lw $s0, baseOut
  
 	beq $s0, 2, out2
@@ -125,8 +126,7 @@ out2:
 	j printNumber
  
 out8:
-	#li $a1, 16
-	#j printNumber
+	j printOctal
  
 out10:
 	li $v0, 36
@@ -134,8 +134,41 @@ out10:
  
 out16:
 	li $v0, 34
-       
-printNumber:
+# ----- End of Switch -----
 
+# ----- Print Number -----
+printNumber:
 	move $a0, $s7
 	syscall
+	j exit
+
+# ----- Print Octal -----
+printOctal:
+	li $t0, 7	# Load Mask
+	move $t8, $sp	# Save Stack Pointer
+	# $t2 = $s7%7 = mod($s7, 7)
+	beq $s7, $zero, printZero
+
+printOctalLoop:
+	beq $s7, $zero, printOctalLoopEnd
+	and	 $t2, $t0, $s7
+	subi $sp, $sp, 4
+	sw $t2, ($sp)
+	srl $s7, $s7, 3
+	j printOctalLoop
+
+printOctalLoopEnd:
+	beq $sp, $t8, exit
+	move $a0, $sp
+	j printOctalLoopEnd
+
+# ----- Print Zero -----
+printZero:
+	li $v0, 1
+	li $a0, 0
+	syscall
+
+# ----- Exit -----
+exit:
+	li $v0, 10
+	syscall 
