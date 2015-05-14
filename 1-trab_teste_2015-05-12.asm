@@ -1,14 +1,23 @@
+# OrganizaÃ§Ã£o de Computadores - Trabalho 1: Base Converter
+# ICMC - USP SÃ£o Carlos
+# 
+# Turma 2
+# Autores:
+#	Carlos Alberto Schneider JÃºnior - 9167910
+#	Lucas Kassouf Crocomo		- 8937420
+#
 .data
 .align 2
-strInfoBase: .asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal\n"
-strGetBaseIn: .asciiz "Qual sera a base de entrada? "
-strGetBaseOut: .asciiz "Qual sera a base de saida? "
-strGetInput: 	.asciiz "Insira o numero: "
-strOut: .asciiz "O Numero na nova base: "
-baseIn: .word 0
-baseOut: .word 0
 
-input: .space 32
+strInfoBase: 	.asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal\n"
+strGetBaseIn: 	.asciiz "Qual sera a base de entrada? "
+strGetBaseOut: 	.asciiz "Qual sera a base de saida? "
+strGetInput: 	.asciiz "Insira o numero: "
+strOut: 	.asciiz "Numero na nova base: "
+baseIn: 	.word 0
+baseOut: 	.word 0
+
+input: 		.space 32
 maxDigit: 	.word 0
 
 .text
@@ -85,7 +94,7 @@ strToBase:
 	li $t1, '\n'
 	la $t2, input
 	li $t8, 'a'	# coloque 'a' ou 'A'
-	subi $t8, $t8, '0'	# Diferença entre '0' e 'a'
+	subi $t8, $t8, '0'	# Diferenï¿½a entre '0' e 'a'
 	li $s7, 0	# $s7 = Final Number
 	# $t4 = digito convertido para int
 
@@ -94,15 +103,15 @@ strToBaseLoop:
 	beq $t4, $t1, strToBaseLoopEnd
 	mul $s7, $s7, $t0	# num = num*base
 	
-	subi $t4, $t4, '0'	# Transforma Dígitos String para Int
+	subi $t4, $t4, '0'	# Transforma Dï¿½gitos String para Int
 	
-	ble $t4, 9, notHex	# IF dígito Hexadecimal...
-	sub $t4, $t4, $t8	# Tira a diferença entre '0' e 'a'
+	ble $t4, 9, notHex	# IF dï¿½gito Hexadecimal...
+	sub $t4, $t4, $t8	# Tira a diferenï¿½a entre '0' e 'a'
 	addi $t4, $t4, 9	# Adiciona 9
 
 notHex:
 	add $s7, $s7, $t4	# num = num + $t4
-	addi $t2, $t2, 1	# Avança na string
+	addi $t2, $t2, 1	# Avanï¿½a na string
 	j strToBaseLoop
 
 strToBaseLoopEnd:
@@ -146,22 +155,24 @@ printNumber:
 printOctal:
 	li $t0, 7	# Load Mask
 	move $t8, $sp	# Save Stack Pointer
-	# $t2 = $s7%7 = mod($s7, 7)
 	beq $s7, $zero, printZero
 
 printOctalLoop:
 	beq $s7, $zero, printOctalLoopEnd
-	and	 $t2, $t0, $s7
+	and $t2, $t0, $s7
 	subi $sp, $sp, 4
 	sw $t2, ($sp)
 	srl $s7, $s7, 3
 	j printOctalLoop
-
+	
 printOctalLoopEnd:
 	beq $sp, $t8, exit
-	move $a0, $sp
+	lw $a0, ($sp)
+	li $v0, 1
+	syscall
+	addi $sp, $sp, 4
 	j printOctalLoopEnd
-
+	
 # ----- Print Zero -----
 printZero:
 	li $v0, 1
