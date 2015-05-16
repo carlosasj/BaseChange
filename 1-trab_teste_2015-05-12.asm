@@ -11,7 +11,9 @@
 
 strInfoBase: 	.asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal\n"
 strGetBaseIn: 	.asciiz "Qual sera a base de entrada? "
+strBaseInNotValid: .asciiz "Base de entrada não válida, insira outra...\n"
 strGetBaseOut: 	.asciiz "Qual sera a base de saida? "
+strBaseOutNotValid: .asciiz "Base de saída não válida, insira outra...\n"
 strGetInput: 	.asciiz "Insira o numero: "
 strOut: 	.asciiz "Numero na nova base: "
 baseIn: 	.word 0
@@ -28,6 +30,7 @@ main:
 	la $a0, strInfoBase 	# loading the string to be printed
 	syscall			# requesting the system to print the message
 	
+askBaseIn:
 	# Asking the user to enter baseIn
 	li $v0, 4  		# 4 is the code for printing a string
 	la $a0, strGetBaseIn 	# loading the string to be printed
@@ -41,7 +44,20 @@ main:
 	sw $t1, baseIn		# storing the value in the memory
 	
 	#-- Validate baseIn
-	
+	beq $t1, 2, askBaseOut	# case 2
+	beq $t1, 8, askBaseOut	# case 8
+	beq $t1, 10, askBaseOut	# case 10
+	beq $t1, 16, askBaseOut	# case 16
+	j baseInNotValid
+
+baseInNotValid: 
+	# Printing warning: base in not valid
+	li $v0, 4  		# 4 is the code for printing a string
+	la $a0, strBaseInNotValid 	# loading the string to be printed
+	syscall			# requesting the system to print the message
+	j askBaseIn
+
+askBaseOut:
 	# Asking the user to enter baseOut
 	li $v0, 4  		# 4 is the code for printing a string
 	la $a0, strGetBaseOut 	# loading the string to be printed
@@ -55,7 +71,20 @@ main:
 	sw $t1, baseOut		# storing the value in the memory
 	
 	#-- Validate baseOut
+	beq $t1, 2, askNumber	# case 2
+	beq $t1, 8, askNumber	# case 8
+	beq $t1, 10, askNumber	# case 10
+	beq $t1, 16, askNumber	# case 16
+	j baseOutNotValid
 
+baseOutNotValid: 
+	# Printing warning: base out not valid
+	li $v0, 4  		# 4 is the code for printing a string
+	la $a0, strBaseOutNotValid 	# loading the string to be printed
+	syscall			# requesting the system to print the message
+	j askBaseOut
+
+askNumber: 
 # ----- Ask Number -----
 	# Asking the user the number (input)
 	li $v0, 4  		# 4 is the code for printing a string
