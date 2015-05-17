@@ -12,9 +12,9 @@
 
 rand:
 	2	8	10	16
-2				
+2	x			
 
-8				
+8		x		
 
 10				
 
@@ -33,6 +33,42 @@ Max:
 16				
 
 ##############################  0  ##############################
+
+As bases possiveis para esse programa sao:
+2 - Binario
+8 - Octal
+10 - Decimal
+16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
+
+Qual sera a base de entrada? 2
+
+Qual sera a base de saida? 2
+
+Insira o numero: 0
+
+Numero na nova base: 00000000000000000000000000000000
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+As bases possiveis para esse programa sao:
+2 - Binario
+8 - Octal
+10 - Decimal
+16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
+
+Qual sera a base de entrada? 8
+
+Qual sera a base de saida? 8
+
+Insira o numero: 0
+
+Numero na nova base: 0
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 ############################## RND ##############################
 
