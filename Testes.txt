@@ -16,7 +16,7 @@ rand:
 
 8		x		
 
-10				
+10			x	
 
 16				
 
@@ -34,12 +34,6 @@ Max:
 
 ##############################  0  ##############################
 
-As bases possiveis para esse programa sao:
-2 - Binario
-8 - Octal
-10 - Decimal
-16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
-
 Qual sera a base de entrada? 2
 
 Qual sera a base de saida? 2
@@ -47,14 +41,9 @@ Qual sera a base de saida? 2
 Insira o numero: 0
 
 Numero na nova base: 00000000000000000000000000000000
+-- program is finished running --
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-As bases possiveis para esse programa sao:
-2 - Binario
-8 - Octal
-10 - Decimal
-16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
 
 Qual sera a base de entrada? 8
 
@@ -63,8 +52,20 @@ Qual sera a base de saida? 8
 Insira o numero: 0
 
 Numero na nova base: 0
+-- program is finished running --
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+Qual sera a base de entrada? 10
+
+Qual sera a base de saida? 10
+
+Insira o numero: 0
+
+Numero na nova base: 0
+-- program is finished running --
+
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -73,12 +74,6 @@ Numero na nova base: 0
 ############################## RND ##############################
 
 ############################## MAX ##############################
-
-As bases possiveis para esse programa sao:
-2 - Binario
-8 - Octal
-10 - Decimal
-16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
 
 Qual sera a base de entrada? 10
 
