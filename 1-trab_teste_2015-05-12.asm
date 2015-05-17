@@ -9,16 +9,16 @@
 .data
 .align 2
 
-strInfoBase: 	.asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal\n"
-strGetBaseIn: 	.asciiz "Qual sera a base de entrada? "
+strInfoBase: 	.asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal (com letras minúsculas, i.e. 10a26)\n"
+strGetBaseIn: 	.asciiz "\nQual sera a base de entrada? "
 strInputNotValid: .asciiz "Entrada inválida, insira outra...\n"
-strGetBaseOut: 	.asciiz "Qual sera a base de saida? "
-strGetInput: 	.asciiz "Insira o numero: "
-strOut: 	.asciiz "Numero na nova base: "
+strGetBaseOut: 	.asciiz "\nQual sera a base de saida? "
+strGetInput: 	.asciiz "\nInsira o numero: "
+strOut: 	.asciiz "\nNumero na nova base: "
 baseIn: 	.word 0
 baseOut: 	.word 0
 
-input: 		.space 32
+input: 		.space 34	# max of 32 digits + '/n' + [any character]
 
 .text
 
@@ -79,19 +79,19 @@ askNumber:
 	beq $s0, 16, set16	# case 16
        
 set2:
-	li $a1, 32	# in Binary, read 32 char (1111 1111 1111 1111 1111 1111 1111 1111)
+	li $a1, 34	# in Binary, read 32 char (11111111111111111111111111111111\n)
 	j getstr
  
 set8:
-	li $a1, 11	# in Octal, read 11 char (37 777 777 777)
+	li $a1, 13	# in Octal, read 11 char (37777777777\n)
 	j getstr
  
 set10:
-	li $a1, 10	# in Decimal, read 10 char (4 294 967 295)
+	li $a1, 12	# in Decimal, read 10 char (4294967295\n)
 	j getstr
  
 set16:
-	li $a1, 8	# in Hexadecimal, read 8 char (FFFF FFFF)
+	li $a1, 10	# in Hexadecimal, read 8 char (FFFFFFFF\n)
        
 getstr:	# Finally, read the number as string
 	li $v0, 8	# Number of syscall to read a string
@@ -239,6 +239,7 @@ validateStringLoop:
 	move $a0, $t4			# Set Parameters
 	jal convertCharToNum	# Call ConvertCharToNum
 	move $t4, $v0			# Get return value
+
 	addi $t2, $t2, 1	# Set next character on string
 	blt $t4, $t0, validateStringLoop
 	
@@ -268,7 +269,7 @@ convertCharToNum:
 	
 	ble $a0, 9, notHex	# IF ($t4 <= 9) jump to "notHex"
 	sub $a0, $a0, $t8	# ELSE subtract the gap between '0' and 'a' (or 'A') | At this point, the number is between 1 and 6
-	addi $a0, $a0, 9	# Add 9 | so 'A' becomes 10; B becomes 11 ...
+	addi $a0, $a0, 10	# Add 10 | so 'A' becomes 10; B becomes 11 ...
 
 notHex:
 	move $v0, $a0
