@@ -11,9 +11,8 @@
 
 strInfoBase: 	.asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal\n"
 strGetBaseIn: 	.asciiz "Qual sera a base de entrada? "
-strBaseInNotValid: .asciiz "Base de entrada não válida, insira outra...\n"
+strInputNotValid: .asciiz "Entrada inv�lida, insira outra...\n"
 strGetBaseOut: 	.asciiz "Qual sera a base de saida? "
-strBaseOutNotValid: .asciiz "Base de saída não válida, insira outra...\n"
 strGetInput: 	.asciiz "Insira o numero: "
 strOut: 	.asciiz "Numero na nova base: "
 baseIn: 	.word 0
@@ -43,19 +42,9 @@ askBaseIn:
 	move $t1, $v0		# copying content in v0 to t1
 	sw $t1, baseIn		# storing the value in the memory
 	
-	#-- Validate baseIn
-	beq $t1, 2, askBaseOut	# case 2
-	beq $t1, 8, askBaseOut	# case 8
-	beq $t1, 10, askBaseOut	# case 10
-	beq $t1, 16, askBaseOut	# case 16
-	j baseInNotValid
-
-baseInNotValid: 
-	# Printing warning: base in not valid
-	li $v0, 4  		# 4 is the code for printing a string
-	la $a0, strBaseInNotValid 	# loading the string to be printed
-	syscall			# requesting the system to print the message
-	j askBaseIn
+	move $a0, $t1		# Set parameters
+	jal validateBase	# Call ValidateBase
+	bne $v0, $zero, askBaseIn	# Verify Return
 
 askBaseOut:
 	# Asking the user to enter baseOut
@@ -70,22 +59,12 @@ askBaseOut:
 	move $t1, $v0		# copying content in v0 to t1
 	sw $t1, baseOut		# storing the value in the memory
 	
-	#-- Validate baseOut
-	beq $t1, 2, askNumber	# case 2
-	beq $t1, 8, askNumber	# case 8
-	beq $t1, 10, askNumber	# case 10
-	beq $t1, 16, askNumber	# case 16
-	j baseOutNotValid
+	move $a0, $t1		# Set parameters
+	jal validateBase	# Call ValidateBase
+	bne $v0, $zero, askBaseOut	# Verify Return
 
-baseOutNotValid: 
-	# Printing warning: base out not valid
-	li $v0, 4  		# 4 is the code for printing a string
-	la $a0, strBaseOutNotValid 	# loading the string to be printed
-	syscall			# requesting the system to print the message
-	j askBaseOut
-
+# ----- Ask Number -----	
 askNumber: 
-# ----- Ask Number -----
 	# Asking the user the number (input)
 	li $v0, 4  		# 4 is the code for printing a string
 	la $a0, strGetInput 	# loading the string to be printed
@@ -119,15 +98,14 @@ getstr:	# Finally, read the number as string
 	la $a0, input	# Address to store the string
 	syscall
 
-	#-- Validate String
+	jal validateStringInput
+	bne $v0, $zero, askNumber
 
 # ----- Convert any valid string to binary, in a register ------
 strToBase:
 	lw $t0, baseIn	# Load baseIn
 	li $t1, '\n'	# Stopping criterion
 	la $t2, input	# Load string input
-	li $t8, 'a'		# put 'a' or 'A' to define if the hexadecimal will be uppercase (FFFF) or lowercase (ffff)
-	subi $t8, $t8, '0'	# Gap between '0' and 'a'
 	li $s7, 0	# $s7 = Final Number (num)
 	# $t4 = Stores character converted to binary
 
@@ -136,13 +114,10 @@ strToBaseLoop:
 	beq $t4, $t1, strToBaseLoopEnd	# WHILE ($t4 != '\n') ...
 	mul $s7, $s7, $t0	# num = num * base
 	
-	subi $t4, $t4, '0'	# Convert ASCII to number between [0..baseInt) (part 1)
+	move $a0, $t4			# Set Parameters
+	jal convertCharToNum	# Call ConvertCharToNum
+	move $t4, $v0			# Get return value
 	
-	ble $t4, 9, notHex	# IF ($t4 <= 9) jump to "notHex"
-	sub $t4, $t4, $t8	# ELSE subtract the gap between '0' and 'a' (or 'A') | At this point, the number is between 1 and 6
-	addi $t4, $t4, 9	# Add 9 | so 'A' becomes 10; B becomes 11 ...
-
-notHex:
 	add $s7, $s7, $t4	# num = num + $t4
 	addi $t2, $t2, 1	# Set next character on string
 	j strToBaseLoop		# Back to Loop
@@ -216,3 +191,88 @@ printZero:
 exit:
 	li $v0, 10
 	syscall 
+
+# ----- Procedures \/ -----
+
+# ----- Validate Base -----
+# Return 0 if valid
+# Return 1 if not valid
+validateBase:
+	addi $sp, $sp, -8	# save $a0, $ra on stack
+	sw $ra, 0($sp)
+	sw $a0, 4($sp)
+	li $v0, 0
+	
+	#-- Validate baseIn
+	beq $a0, 2, validateBaseReturn	# case 2
+	beq $a0, 8, validateBaseReturn	# case 8
+	beq $a0, 10, validateBaseReturn	# case 10
+	beq $a0, 16, validateBaseReturn	# case 16
+	j baseNotValid
+
+baseNotValid: 
+	# Printing warning: base in not valid
+	li $v0, 4  		# 4 is the code for printing a string
+	la $a0, strInputNotValid 	# loading the string to be printed
+	syscall			# requesting the system to print the message
+	li $v0, 1
+
+validateBaseReturn:
+	lw $a0, 4($sp)
+	lw $ra, 0($sp)
+	addi $sp, $sp, 8
+	jr $ra
+
+# ----- Validate String Input -----
+validateStringInput:
+	addi $sp, $sp, -4	# save $ra on stack
+	sw $ra, 0($sp)
+
+	lw $t0, baseIn	# Load baseIn
+	li $t1, '\n'	# Stopping criterion
+	la $t2, input	# Load string input
+
+validateStringLoop:
+	lb $t4, ($t2)		# Get Character of string
+	beq $t4, $t1, validateStringLoopEnd	# WHILE ($t4 != '\n') ...
+	
+	move $a0, $t4			# Set Parameters
+	jal convertCharToNum	# Call ConvertCharToNum
+	move $t4, $v0			# Get return value
+	addi $t2, $t2, 1	# Set next character on string
+	blt $t4, $t0, validateStringLoop
+	
+	li $v0, 4  		# 4 is the code for printing a string
+	la $a0, strInputNotValid 	# loading the string to be printed
+	syscall			# requesting the system to print the message
+	li $v0, 1
+	j validateStringLoopReturn
+	
+validateStringLoopEnd:
+	li $v0, 0
+validateStringLoopReturn:
+	lw $ra, 0($sp)
+	addi $sp, $sp, 4
+	jr $ra
+
+# ----- Convert Char to Num -----
+convertCharToNum:
+	addi $sp, $sp, -8	# save $a0, $ra on stack
+	sw $ra, 0($sp)
+	sw $a0, 4($sp)
+	
+	li $t8, 'a'		# put 'a' or 'A' to define if the hexadecimal will be uppercase (FFFF) or lowercase (ffff)
+	subi $t8, $t8, '0'	# Gap between '0' and 'a'
+	
+	subi $a0, $a0, '0'	# Convert ASCII to number between [0..baseInt) (part 1)
+	
+	ble $a0, 9, notHex	# IF ($t4 <= 9) jump to "notHex"
+	sub $a0, $a0, $t8	# ELSE subtract the gap between '0' and 'a' (or 'A') | At this point, the number is between 1 and 6
+	addi $a0, $a0, 9	# Add 9 | so 'A' becomes 10; B becomes 11 ...
+
+notHex:
+	move $v0, $a0
+	lw $a0, 4($sp)
+	lw $ra, 0($sp)
+	addi $sp, $sp, 8
+	jr $ra
