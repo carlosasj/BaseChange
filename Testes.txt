@@ -1,0 +1,56 @@
+0:
+	2	8	10	16
+2				
+
+8				
+
+10				
+
+16				
+
+-------------------------
+
+rand:
+	2	8	10	16
+2				
+
+8				
+
+10				
+
+16				
+
+-------------------------
+
+Max:
+	2	8	10	16
+2				
+
+8				
+
+10				
+
+16				
+
+##############################  0  ##############################
+
+############################## RND ##############################
+
+############################## MAX ##############################
+
+As bases possiveis para esse programa sao:
+2 - Binario
+8 - Octal
+10 - Decimal
+16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
+
+Qual sera a base de entrada? 10
+
+Qual sera a base de saida? 16
+
+Insira o numero: 4294967295
+
+Numero na nova base: 0xffffffff
+-- program is finished running --
+
+############################################################
