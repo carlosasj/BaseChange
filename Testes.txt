@@ -1,24 +1,24 @@
 0:
 	2	8	10	16
-2				
+2	x	x	x	x
 
-8				
+8	x	x	x	x
 
-10				
+10	x	x	x	x
 
-16				
+16	x	x	x	x
 
 -------------------------
 
 rand:
 	2	8	10	16
-2	x			
+2	x	x	x	x
 
 8		x		
 
 10			x	
 
-16				
+16				x
 
 -------------------------
 
@@ -35,22 +35,16 @@ Max:
 ##############################  0  ##############################
 
 Qual sera a base de entrada? 2
-
 Qual sera a base de saida? 2
-
 Insira o numero: 0
-
 Numero na nova base: 00000000000000000000000000000000
 -- program is finished running --
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 Qual sera a base de entrada? 8
-
 Qual sera a base de saida? 8
-
 Insira o numero: 0
-
 Numero na nova base: 0
 -- program is finished running --
 
@@ -58,29 +52,122 @@ Numero na nova base: 0
 
 
 Qual sera a base de entrada? 10
-
 Qual sera a base de saida? 10
-
 Insira o numero: 0
-
 Numero na nova base: 0
 -- program is finished running --
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 16
+Insira o numero: 0
+Numero na nova base: 0x00000000
+-- program is finished running --
+
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 8
+Insira o numero: 0
+Numero na nova base: 0
+-- program is finished running --
+
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 10
+Insira o numero: 0
+Numero na nova base: 0
+-- program is finished running --
+
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 16
+Insira o numero: 0
+Numero na nova base: 0x00000000
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 2
+Insira o numero: 0
+Numero na nova base: 00000000000000000000000000000000
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 10
+Insira o numero: 0
+Numero na nova base: 0
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 16
+Insira o numero: 0
+Numero na nova base: 0x00000000
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 2
+Insira o numero: 0
+Numero na nova base: 00000000000000000000000000000000
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 8
+Insira o numero: 0
+Numero na nova base: 0
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 16
+Insira o numero: 0
+Numero na nova base: 0x00000000
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 2
+Insira o numero: 0
+Numero na nova base: 00000000000000000000000000000000
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 8
+Insira o numero: 0
+Numero na nova base: 0
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 10
+Insira o numero: 0
+Numero na nova base: 0
+-- program is finished running --
 
 ############################## RND ##############################
 
 ############################## MAX ##############################
 
 Qual sera a base de entrada? 10
-
 Qual sera a base de saida? 16
-
 Insira o numero: 4294967295
-
 Numero na nova base: 0xffffffff
 -- program is finished running --
 
