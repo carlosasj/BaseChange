@@ -176,6 +176,86 @@ Insira o numero: 2746
 Numero na nova base: 0x00000aba
 -- program is finished running --
 
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 8
+Insira o numero: 011101110111101
+Numero na nova base: 35675
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 2
+Insira o numero: 35675
+Numero na nova base: 00000000000000000011101110111101
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 10
+Insira o numero: 011101110111101
+Numero na nova base: 15293
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 2
+Insira o numero: 15293
+Numero na nova base: 00000000000000000011101110111101
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 10
+Insira o numero: 35675
+Numero na nova base: 15293
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 8
+Insira o numero: 15293
+Numero na nova base: 35675
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 16
+Insira o numero: 011101110111101
+Numero na nova base: 0x00003bbd
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 2
+Insira o numero: 3bbd
+Numero na nova base: 00000000000000000011101110111101
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 16
+Insira o numero: 2775437
+Numero na nova base: 0x000bfb1f
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 8
+Insira o numero: bfb1f
+Numero na nova base: 2775437
+-- program is finished running --
+
 
 ############################## MAX ##############################
 
@@ -349,3 +429,27 @@ Numero na nova base: 4095
 -- program is finished running --
 
 ===== Erro: Entrada fora da base =====
+
+As bases possiveis para esse programa sao:
+2 - Binario
+8 - Octal
+10 - Decimal
+16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
+
+Qual sera a base de entrada? 8
+
+Qual sera a base de saida? 16
+
+Insira o numero: 456789
+Entrada inválida, insira outra...
+
+Insira o numero: 10a26
+Entrada inválida, insira outra...
+
+Insira o numero: 1014567f
+Entrada inválida, insira outra...
+
+Insira o numero: 7142536
+
+Numero na nova base: 0x001cc55e
+-- program is finished running --
