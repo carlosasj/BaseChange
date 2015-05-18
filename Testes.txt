@@ -453,3 +453,32 @@ Insira o numero: 7142536
 
 Numero na nova base: 0x001cc55e
 -- program is finished running --
+
+===== Erro: Digitar letra em uma das bases =====
+
+Qual sera a base de entrada? As bases possiveis para esse programa sao:
+2 - Binario
+8 - Octal
+10 - Decimal
+16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
+
+Qual sera a base de entrada? f
+Entrada inválida, insira outra...
+
+Qual sera a base de entrada? g
+Entrada inválida, insira outra...
+
+Qual sera a base de entrada? 10
+
+Qual sera a base de saida? a
+Entrada inválida, insira outra...
+
+Qual sera a base de saida? j
+Entrada inválida, insira outra...
+
+Qual sera a base de saida? 2
+
+Insira o numero: 481516234
+
+Numero na nova base: 00011100101100110101101011001010
+-- program is finished running --

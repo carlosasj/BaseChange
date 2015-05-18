@@ -29,6 +29,7 @@ main:
 	la $a0, strInfoBase 	# loading the string to be printed
 	syscall			# requesting the system to print the message
 	
+	la $t5, askBaseIn	#If have exception, return here
 askBaseIn:
 	# Asking the user to enter baseIn
 	li $v0, 4  		# 4 is the code for printing a string
@@ -46,6 +47,7 @@ askBaseIn:
 	jal validateBase	# Call ValidateBase
 	bne $v0, $zero, askBaseIn	# Verify Return
 
+	la $t5, askBaseOut	#If have exception, return here
 askBaseOut:
 	# Asking the user to enter baseOut
 	li $v0, 4  		# 4 is the code for printing a string
@@ -276,4 +278,12 @@ notHex:
 	lw $a0, 4($sp)
 	lw $ra, 0($sp)
 	addi $sp, $sp, 8
+	jr $ra
+
+# ----- Exception -----
+.ktext 0x80000180
+	li $v0, 4 				# service 4, print string
+	la $a0, strInputNotValid  # syscall argument
+	syscall
+	move $ra, $t5 	# return address
 	jr $ra
