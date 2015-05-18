@@ -1,17 +1,17 @@
-# Organização de Computadores - Trabalho 1: Base Converter
-# ICMC - USP São Carlos
+# Organizacao de Computadores - Trabalho 1: Base Converter
+# ICMC - USP Sao Carlos
 # 
 # Turma 2
 # Autores:
-#	Carlos Alberto Schneider Júnior - 9167910
+#	Carlos Alberto Schneider Junior - 9167910
 #	Lucas Kassouf Crocomo		- 8937420
 #
 .data
 .align 2
 
-strInfoBase: 	.asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal (com letras min�sculas, i.e. 10a26)\n"
+strInfoBase: 	.asciiz "As bases possiveis para esse programa sao:\n2 - Binario\n8 - Octal\n10 - Decimal\n16 - Hexadecimal (com letras minúsculas, i.e. 10a26)\n"
 strGetBaseIn: 	.asciiz "\nQual sera a base de entrada? "
-strInputNotValid: .asciiz "Entrada inv�lida, insira outra...\n"
+strInputNotValid: .asciiz "Entrada inválida, insira outra...\n"
 strGetBaseOut: 	.asciiz "\nQual sera a base de saida? "
 strGetInput: 	.asciiz "\nInsira o numero: "
 strOut: 	.asciiz "\nNumero na nova base: "
