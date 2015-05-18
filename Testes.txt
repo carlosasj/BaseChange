@@ -1,36 +1,4 @@
-0:
-	2	8	10	16
-2	x	x	x	x
-
-8	x	x	x	x
-
-10	x	x	x	x
-
-16	x	x	x	x
-
--------------------------
-
-rand:
-	2	8	10	16
-2	x	x	x	x
-
-8		x		
-
-10			x	
-
-16				x
-
--------------------------
-
-Max:
-	2	8	10	16
-2				
-
-8				
-
-10				
-
-16				
+Saídas do Mars:
 
 ##############################  0  ##############################
 
@@ -49,7 +17,6 @@ Numero na nova base: 0
 -- program is finished running --
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
 
 Qual sera a base de entrada? 10
 Qual sera a base de saida? 10
@@ -163,6 +130,53 @@ Numero na nova base: 0
 
 ############################## RND ##############################
 
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 16
+Insira o numero: aba
+Numero na nova base: 0x00000aba
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 10
+Insira o numero: aba
+Numero na nova base: 2746
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 10
+Insira o numero: 2999124
+Numero na nova base: 2999124
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 2
+Insira o numero: 011101110111101
+Numero na nova base: 00000000000000000011101110111101
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 8
+Insira o numero: 2775437
+Numero na nova base: 2775437
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 16
+Insira o numero: 2746
+Numero na nova base: 0x00000aba
+-- program is finished running --
+
+
 ############################## MAX ##############################
 
 Qual sera a base de entrada? 10
@@ -171,4 +185,167 @@ Insira o numero: 4294967295
 Numero na nova base: 0xffffffff
 -- program is finished running --
 
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 10
+Insira o numero: ffffffff
+Numero na nova base: 4294967295
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 10
+Insira o numero: 11111111111111111111111111111111
+Numero na nova base: 4294967295
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 2
+Insira o numero: 4294967295
+Numero na nova base: 11111111111111111111111111111111
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de saida? 2
+
+Insira o numero: 11111111111111111111111111111111
+
+Numero na nova base: 11111111111111111111111111111111
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 8
+Insira o numero: ffffffff
+Numero na nova base: 37777777777
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 16
+Insira o numero: 37777777777
+Numero na nova base: 0xffffffff
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 8
+Insira o numero: 37777777777
+Numero na nova base: 37777777777
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 10
+Insira o numero: 4294967295
+Numero na nova base: 4294967295
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 10
+Qual sera a base de saida? 8
+Insira o numero: 4294967295
+Numero na nova base: 37777777777
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 10
+Insira o numero: 37777777777
+Numero na nova base: 4294967295
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 16
+Insira o numero: 11111111111111111111111111111111
+Numero na nova base: 0xffffffff
+-- program is finished running --
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 2
+Insira o numero: ffffffff
+Numero na nova base: 11111111111111111111111111111111
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 16
+Qual sera a base de saida? 16
+Insira o numero: ffffffff
+Numero na nova base: 0xffffffff
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 2
+Qual sera a base de saida? 8
+Insira o numero: 11111111111111111111111111111111
+Numero na nova base: 37777777777
+-- program is finished running --
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Qual sera a base de entrada? 8
+Qual sera a base de saida? 2
+Insira o numero: 37777777777
+Numero na nova base: 11111111111111111111111111111111
+-- program is finished running --
+
 ############################################################
+
+===== Erro: Base diferente das possíveis =====
+
+As bases possiveis para esse programa sao:
+2 - Binario
+8 - Octal
+10 - Decimal
+16 - Hexadecimal (com letras minúsculas, i.e. 10a26)
+
+Qual sera a base de entrada? 20
+Entrada inválida, insira outra...
+
+Qual sera a base de entrada? 7
+Entrada inválida, insira outra...
+
+Qual sera a base de entrada? 1
+Entrada inválida, insira outra...
+
+Qual sera a base de entrada? 16
+
+Qual sera a base de saida? 5
+Entrada inválida, insira outra...
+
+Qual sera a base de saida? 4
+Entrada inválida, insira outra...
+
+Qual sera a base de saida? 70
+Entrada inválida, insira outra...
+
+Qual sera a base de saida? 42
+Entrada inválida, insira outra...
+
+Qual sera a base de saida? 10
+
+Insira o numero: fff
+
+Numero na nova base: 4095
+-- program is finished running --
+
+===== Erro: Entrada fora da base =====
